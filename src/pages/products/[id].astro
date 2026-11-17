@@ -1,0 +1,148 @@
+---
+import Base from '../../layouts/Base.astro';
+import Chrome from '../../components/Chrome.astro';
+import Footer from '../../components/Footer.astro';
+import Lid from '../../components/Lid.astro';
+import Split from '../../components/Split.astro';
+import { products, sizes, priceFor, type Product } from '../../data/products';
+
+export function getStaticPaths() {
+  return products.map((p) => ({ params: { id: p.id }, props: { p } }));
+}
+const { p } = Astro.props as { p: Product };
+const others = products.filter((o) => o.id !== p.id);
+const money = (n: number) => `$${n.toFixed(2)}`;
+const vars = `--p-bg:${p.bg};--p-accent:${p.accent};--p-ink:${p.ink};--p-lid:${p.lid};--p-rim:${p.rim};--p-cream:${p.cream}`;
+---
+<Base title={`${p.name} ${p.name2} — Ascel Beauty`} description={`${p.blurb} ${p.texture}`}>
+  <div class="tx-enter paper" style={`background:${p.bg}`} aria-hidden="true"><img class="tx-enter__img" alt="" /></div>
+  <script is:inline>
+    try {
+      var d = JSON.parse(sessionStorage.getItem('sl-tx') || 'null');
+      if (d && Date.now() - d.t < 15000) {
+        document.documentElement.classList.add('tx-in');
+        if (d.img) document.querySelector('.tx-enter__img').src = d.img;
+      }
+    } catch (e) {}
+  </script>
+
+  <Chrome base="/" back />
+
+  <main id="main" class="pd" style={vars}>
+    <!-- ================= PRODUCT HERO ================= -->
+    <section class="pd-hero paper">
+      <p class="pd-the" aria-hidden="true"><Split text="THE" /></p>
+      <p class="pd-nick" aria-hidden="true" style={`--len:${p.nick.length}`}><Split text={p.nick} /></p>
+
+      <div class="pd-stage" data-cursor="DRAG">
+        <canvas class="pd-canvas" aria-label={`Interactive 3D jar of ${p.name} ${p.name2}. Drag to rotate, tap to open the lid.`}></canvas>
+        <p class="pd-hint hand" aria-hidden="true">
+          <svg viewBox="0 0 120 40"><path d="M4 30 C 40 4, 80 4, 112 26" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M100 28 l14 0 -4 -13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+          drag to spin 360° · tap the jar to open
+        </p>
+        <button class="pd-open" aria-pressed="false" data-cursor="OPEN"><span>OPEN LID</span></button>
+      </div>
+
+      <div class="pd-left">
+        <ul class="fam__tags">{p.tags.map((t) => <li>{t}</li>)}</ul>
+        <p class="pd-blurb">{p.blurb}</p>
+        <p class="pd-texture"><i style={`background:${p.cream}`}></i><span><b>TEXTURE</b>{p.texture}</span></p>
+      </div>
+
+      <aside class="pd-buy" aria-label="Purchase options">
+        <span class="washi washi--butter pd-buy__tape"></span>
+        <p class="pd-crumb">ASCEL BEAUTY / FACE &amp; BODY / {p.variant}</p>
+        <h1 class="pd-name">{p.name}<br />{p.name2}</h1>
+        <p class="pd-rating"><span class="stars" style={`--r:${p.rating / 5}`} aria-hidden="true">★★★★★</span> {p.rating} <small>({p.reviews.toLocaleString('en-US')} reviews)</small></p>
+        <p class="pd-price"><b class="pd-price__val">{money(priceFor(p, 50))}</b> <small class="pd-price__ml">/ 50 ML</small></p>
+        <fieldset class="pd-sizes">
+          <legend>Size</legend>
+          {sizes.map((s) => (
+            <label>
+              <input type="radio" name="size" value={s.ml} data-price={priceFor(p, s.ml)} checked={s.ml === 50} />
+              <span>{s.ml} ML<small>{money(priceFor(p, s.ml))}</small></span>
+            </label>
+          ))}
+        </fieldset>
+        <div class="pd-row">
+          <div class="pd-qty" role="group" aria-label="Quantity">
+            <button class="pd-qty__minus" aria-label="Decrease quantity">−</button>
+            <output class="pd-qty__val" aria-live="polite">1</output>
+            <button class="pd-qty__plus" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="btn pd-add" data-cursor="ADD">ADD TO BAG — <span class="pd-add__total">{money(priceFor(p, 50))}</span></button>
+        </div>
+        <ul class="pd-perks">
+          <li>✓ Vegan &amp; cruelty-free</li><li>✓ Derm tested</li><li>✓ Free shipping over $40</li>
+        </ul>
+        <p class="pd-demo">Demo pricing · concept store by ascelstack.com</p>
+      </aside>
+    </section>
+
+    <!-- ================= BAND ================= -->
+    <section class="band pd-band" aria-hidden="true">
+      <svg viewBox="0 0 1600 300" preserveAspectRatio="none">
+        <path id="pd-wave" d="M-200 190 C 100 60, 300 60, 600 150 S 1100 260, 1400 140 S 1800 60, 2000 130" fill="none" stroke={p.accent} stroke-width="130" />
+        <text dy="20"><textPath class="band__text" href="#pd-wave" startOffset="0">{`${p.name} ${p.name2} ✿ ${p.tags.join(' ✿ ')} ✿ `.repeat(4)}</textPath></text>
+      </svg>
+    </section>
+
+    <!-- ================= INSIDE ================= -->
+    <section class="pd-inside paper">
+      <h2 class="pd-h2" data-reveal><Split text="WHAT'S INSIDE" /></h2>
+      <div class="pd-inside__grid">
+        <div class="pd-swirl" data-reveal>
+          <svg viewBox="0 0 400 400" aria-hidden="true">
+            <defs>
+              <radialGradient id="cr" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#fff" /><stop offset=".55" stop-color={p.cream} /><stop offset="1" stop-color={p.lid} /></radialGradient>
+            </defs>
+            <circle cx="200" cy="200" r="190" fill={p.rim} />
+            <circle cx="200" cy="200" r="168" fill="url(#cr)" />
+            <path d="M200 70 C 300 80, 330 200, 250 260 C 180 310, 100 250, 130 180 C 155 120, 240 130, 240 190 C 240 230, 190 240, 180 210" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" opacity=".75" />
+            <path d="M200 70 C 300 80, 330 200, 250 260 C 180 310, 100 250, 130 180 C 155 120, 240 130, 240 190 C 240 230, 190 240, 180 210" fill="none" stroke={p.lid} stroke-width="5" stroke-linecap="round" opacity=".45" transform="translate(6 8)" />
+          </svg>
+          <p class="hand">{p.texture}</p>
+        </div>
+        <ol class="pd-ings">
+          {p.ingredients.map((ing, i) => (
+            <li data-reveal>
+              <span class="pd-ings__n">{i + 1}</span>
+              <div><h3>{ing.name}</h3><p>{ing.note}</p></div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= HOW TO ================= -->
+    <section class="pd-how paper">
+      <h2 class="pd-h2" data-reveal><Split text="HOW TO GLOW" /></h2>
+      <ol class="pd-steps">
+        {p.steps.map((s, i) => <li data-reveal><span>{String(i + 1).padStart(2, '0')}</span><p>{s}</p></li>)}
+      </ol>
+    </section>
+
+    <!-- ================= MORE ================= -->
+    <section class="pd-more paper">
+      <h2 class="pd-h2" data-reveal><Split text="YOU MIGHT ALSO LOVE" /></h2>
+      <div class="pd-more__row">
+        {others.map((o) => (
+          <a class="pd-more__item" href={`/products/${o.id}`} data-bg={o.bg} data-cursor="OPEN" data-reveal>
+            <div class="pd-more__lid"><Lid p={o} uid={`more-${o.id}`} /></div>
+            <b>{o.name} {o.name2}</b>
+            <span>{money(priceFor(o, 50))}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <Footer base="/" />
+  </main>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script type="application/json" id="product-data" set:html={JSON.stringify(p)} />
+  <script>
+    import { initProduct } from '../../scripts/product';
+    initProduct();
+  </script>
+</Base>

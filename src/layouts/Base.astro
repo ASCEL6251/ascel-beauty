@@ -1,0 +1,35 @@
+---
+import '../styles/global.css';
+interface Props { title?: string; description?: string; }
+const {
+  title = 'Ascel Beauty — Glow With You | Everyday Face & Body Creams',
+  description = 'Ascel Beauty makes everyday creams for real-life skin. Moisturizers, day cream, night repair, barrier balm, eye and hand creams.',
+} = Astro.props;
+---
+<!doctype html>
+<!-- Ascel Beauty © 2026 AscelStack (https://ascelstack.com). All rights reserved. Proprietary source — copying or reuse without written permission is prohibited. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#FF9EC4" />
+    <meta name="author" content="AscelStack" />
+    <meta name="copyright" content="© 2026 AscelStack. All rights reserved." />
+    <link rel="author" href="https://ascelstack.com" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800;900&family=Caveat:wght@500;700&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+    <a class="asc-badge" href="https://ascelstack.com" target="_blank" rel="noopener" title="Built by AscelStack — visit ascelstack.com">
+      <span class="asc-badge__mark" aria-hidden="true">A</span>
+      <span class="asc-badge__name">AscelStack</span>
+      <span class="asc-badge__tag">DEMO</span>
+    </a>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+---
+// Server-side split into word + char spans (no layout shift, no runtime splitting)
+interface Props { text: string; }
+const { text } = Astro.props;
+const words = text.split(' ');
+---
+<span class="sr-only">{text}</span><span aria-hidden="true">{words.map((w, i) => (
+  <><span class="word">{[...w].map((c) => <span class="char">{c}</span>)}</span>{i < words.length - 1 ? ' ' : ''}</>
+))}</span>

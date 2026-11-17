@@ -1,0 +1,108 @@
+ASCELSTACK PROPRIETARY LICENSE
+Version 1.0 — Effective 17 November 2026
+
+Copyright (c) 2026 AscelStack (https://ascelstack.com, https://slstack.com).
+All rights reserved.
+
+Project: "Ascel Beauty" concept brand website and all files in this repository
+(the "Software").
+
+
+1. OWNERSHIP
+
+The Software, including but not limited to its source code, compiled output,
+3D models and procedural geometry, animation timelines and choreography,
+shaders, textures, illustrations, SVG artwork, logos, copywriting, product
+names, page layouts, documentation, screenshots and recordings, is the
+exclusive property of AscelStack and is protected by copyright law,
+international treaties and other intellectual-property laws.
+
+"Ascel Beauty", "AscelStack" and the associated logos are trade names and
+marks of AscelStack.
+
+
+2. NO LICENSE GRANTED
+
+This repository is published publicly for SHOWCASE AND PORTFOLIO PURPOSES ONLY.
+Making the source visible does NOT make it open source and does NOT grant you
+any licence or right in the Software, except the limited right described in
+Section 3.
+
+Without the prior WRITTEN permission of AscelStack you may NOT, in whole or in
+part, directly or indirectly:
+
+  a) copy, reproduce, clone, mirror or re-host the Software or any website
+     built from it;
+  b) modify, adapt, translate, or create derivative works based on the
+     Software, including "re-skinned" or renamed versions;
+  c) distribute, publish, sell, sublicense, rent, lease or otherwise make the
+     Software available to any third party;
+  d) use the Software, or any portion of it, in any personal, client or
+     commercial project, template, theme, starter kit or product;
+  e) remove, alter or obscure any copyright notice, licence header, banner,
+     author attribution or the "AscelStack DEMO" badge and its link;
+  f) use the Software, its code, assets or outputs to train, fine-tune or
+     evaluate machine-learning or AI models, or include it in any dataset;
+  g) use the names "Ascel Beauty", "AscelStack" or any AscelStack mark to
+     imply endorsement or affiliation.
+
+
+3. LIMITED PERMITTED USE
+
+You may:
+
+  a) view the source code and documentation on GitHub;
+  b) use GitHub's own "fork" feature solely as allowed by the GitHub Terms of
+     Service, without any further use described in Section 2;
+  c) run the Software locally for the sole purpose of evaluating AscelStack's
+     work, provided no copy is published or deployed.
+
+Any other use requires a separate written agreement with AscelStack.
+Licensing and commercial enquiries: https://ascelstack.com
+
+
+4. THIRD-PARTY COMPONENTS
+
+Open-source packages used by the Software (for example Astro, Three.js, GSAP,
+Lenis, Matter.js, Wrangler) and the Google Fonts typefaces remain under their
+own licences. They are NOT covered by this licence and NOT claimed by
+AscelStack. See the NOTICE file for the list.
+
+
+5. ENFORCEMENT
+
+AscelStack actively monitors for unauthorised use. Any use outside Section 3
+is infringement. AscelStack reserves the right, without prior notice, to:
+
+  - file DMCA (17 U.S.C. § 512) and equivalent takedown notices with GitHub,
+    hosting providers, CDNs, domain registrars and search engines;
+  - seek injunctive relief, damages, profits and legal costs in any competent
+    jurisdiction;
+  - pursue any other remedy available under applicable law.
+
+The Software contains embedded ownership markers (copyright banners, metadata,
+response headers and attribution elements) that may be used as evidence of
+copying.
+
+
+6. TERMINATION
+
+Any rights granted under Section 3 end automatically and immediately if you
+breach this licence. On termination you must delete every copy of the
+Software in your possession.
+
+
+7. NO WARRANTY
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED. IN NO EVENT SHALL ASCELSTACK BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY ARISING FROM THE SOFTWARE OR ITS USE.
+
+
+8. GENERAL
+
+If any provision of this licence is held unenforceable, the remaining
+provisions stay in full effect. Failure to enforce any provision is not a
+waiver. All rights not expressly granted are reserved by AscelStack.
+
+Report suspected infringement: see SECURITY.md, "Reporting stolen code".

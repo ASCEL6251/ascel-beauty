@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Lost the lid — Ascel Beauty">
+  <main id="main" class="nf paper">
+    <p class="nf__code">404</p>
+    <h1 class="nf__title">THIS JAR IS EMPTY</h1>
+    <p class="nf__text hand">The page you're looking for rolled away.</p>
+    <a class="btn" href="/">BACK TO THE CREAMS</a>
+  </main>
+</Base>
+<style>
+  .nf { min-height: 100svh; display: grid; place-content: center; justify-items: center; gap: 18px; text-align: center; padding: 24px; background: var(--pink); color: var(--berry); }
+  .nf__code { font: 900 clamp(120px, 28vw, 340px)/.8 var(--display); }
+  .nf__title { font: 900 clamp(34px, 6vw, 72px)/1 var(--display); }
+  .nf__text { font-size: clamp(22px, 3vw, 32px); }
+</style>

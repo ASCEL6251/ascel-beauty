@@ -1,0 +1,104 @@
+---
+// Flat illustrated "photo" cards (original artwork, no external images)
+interface Props { kind: string; lid?: string; ink?: string; class?: string; }
+const { kind, lid = '#FFB3CF', ink = '#5A0F2E', class: cls = '' } = Astro.props;
+const bgs: Record<string, string> = {
+  swatch: '#FFE3EC', mirror: '#BDE8FF', sun: '#FFE9A8', bag: '#FFD3BE', moon: '#2A1460',
+  pillow: '#E6DCFF', snow: '#DDF4FF', hands: '#FFE0D1', eye: '#E3F7FF', coffee: '#FFE8D6',
+  shelf: '#FFF4E6', hydrate: '#BDE8FF', soothe: '#E6F9C9', protect: '#FFE9A8',
+};
+const bg = bgs[kind] ?? '#FFF4E6';
+---
+<svg class={`scene ${cls}`} viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="300" height="300" fill={bg} />
+  {/* reusable jar */}
+  <defs>
+    <g id={`jar-${kind}`}>
+      <rect x="-48" y="-10" width="96" height="62" rx="16" fill="#FFF4E6" stroke={ink} stroke-width="4" />
+      <rect x="-30" y="8" width="60" height="26" rx="5" fill={lid} />
+      <rect x="-52" y="-34" width="104" height="30" rx="10" fill={lid} stroke={ink} stroke-width="4" />
+      <path d="M-40 -26 v14 M-28 -26 v14 M-16 -26 v14 M-4 -26 v14 M8 -26 v14 M20 -26 v14 M32 -26 v14" stroke={ink} stroke-opacity=".25" stroke-width="3" />
+    </g>
+  </defs>
+
+  {kind === 'swatch' && <>
+    <path d="M40 210 C70 120 160 230 200 150 S270 120 260 90" fill="none" stroke="#FFF4E6" stroke-width="46" stroke-linecap="round" />
+    <path d="M40 210 C70 120 160 230 200 150 S270 120 260 90" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" opacity=".8" transform="translate(-6 -8)" />
+    <use href={`#jar-${kind}`} transform="translate(100 90) rotate(-12)" />
+    <circle cx="240" cy="240" r="10" fill={lid} /><circle cx="262" cy="222" r="5" fill={lid} />
+  </>}
+  {kind === 'mirror' && <>
+    <ellipse cx="150" cy="130" rx="92" ry="110" fill="#fff" stroke={ink} stroke-width="6" />
+    <ellipse cx="150" cy="130" rx="76" ry="94" fill="#DFF5FF" />
+    <path d="M110 70 l30 -20 M110 96 l50 -34" stroke="#fff" stroke-width="10" stroke-linecap="round" />
+    <use href={`#jar-${kind}`} transform="translate(210 250)" />
+    <rect x="20" y="268" width="260" height="32" fill={ink} opacity=".15" />
+  </>}
+  {kind === 'sun' && <>
+    <circle cx="150" cy="120" r="60" fill="#FF7A3D" />
+    {Array.from({ length: 12 }).map((_, i) => <rect x="146" y="22" width="8" height="26" rx="4" fill="#FF7A3D" transform={`rotate(${i * 30} 150 120)`} />)}
+    <path d="M0 220 Q75 190 150 220 T300 220 V300 H0z" fill="#2F7DF6" />
+    <use href={`#jar-${kind}`} transform="translate(150 236) rotate(6)" />
+  </>}
+  {kind === 'bag' && <>
+    <path d="M60 110 h180 l-14 170 h-152z" fill="#FF7A3D" stroke={ink} stroke-width="5" />
+    <path d="M110 110 c0-60 80-60 80 0" fill="none" stroke={ink} stroke-width="8" />
+    <use href={`#jar-${kind}`} transform="translate(130 112) rotate(-18) scale(.9)" />
+    <rect x="170" y="70" width="28" height="70" rx="8" fill="#FFB3CF" stroke={ink} stroke-width="4" transform="rotate(14 184 105)" />
+  </>}
+  {kind === 'moon' && <>
+    <circle cx="200" cy="90" r="50" fill="#FFD84D" /><circle cx="222" cy="76" r="46" fill="#2A1460" />
+    {[[40,50],[90,30],[60,120],[260,160],[130,80],[240,30]].map(([x,y]) => <path d={`M${x} ${y-8} L${x+3} ${y-2} L${x+9} ${y} L${x+3} ${y+2} L${x} ${y+8} L${x-3} ${y+2} L${x-9} ${y} L${x-3} ${y-2}z`} fill="#FFF4E6" />)}
+    <use href={`#jar-${kind}`} transform="translate(130 220) scale(1.2)" />
+  </>}
+  {kind === 'pillow' && <>
+    <rect x="30" y="120" width="240" height="130" rx="50" fill="#fff" stroke={ink} stroke-width="5" />
+    <path d="M70 150 q80 30 160 0" fill="none" stroke={ink} stroke-opacity=".2" stroke-width="5" />
+    <text x="90" y="90" font-family="Caveat, cursive" font-size="44" fill={ink}>z z z</text>
+    <use href={`#jar-${kind}`} transform="translate(200 200) rotate(10) scale(.8)" />
+  </>}
+  {kind === 'snow' && <>
+    {[[40,40],[110,70],[200,30],[260,90],[70,130],[170,120],[250,170]].map(([x,y]) => <g stroke="#7FB6E0" stroke-width="4" stroke-linecap="round"><path d={`M${x-12} ${y} h24 M${x} ${y-12} v24 M${x-8} ${y-8} l16 16 M${x+8} ${y-8} l-16 16`} /></g>)}
+    <path d="M0 230 Q150 180 300 230 V300 H0z" fill="#fff" />
+    <rect x="70" y="170" width="160" height="34" rx="17" fill="#E2453C" />
+    <rect x="186" y="170" width="34" height="80" rx="12" fill="#E2453C" />
+    <use href={`#jar-${kind}`} transform="translate(110 250) scale(.9)" />
+  </>}
+  {kind === 'hands' && <>
+    <path d="M30 300 C40 210 80 170 130 170 L190 170 C210 170 210 196 190 198 L150 200" fill="#F2B49A" stroke={ink} stroke-width="5" />
+    <path d="M270 300 C260 220 220 180 180 186" fill="#E59A80" stroke={ink} stroke-width="5" />
+    <use href={`#jar-${kind}`} transform="translate(160 130) rotate(-8)" />
+    <circle cx="70" cy="70" r="8" fill="#fff" /><circle cx="250" cy="60" r="6" fill="#fff" />
+  </>}
+  {kind === 'eye' && <>
+    <path d="M40 150 Q150 60 260 150 Q150 240 40 150z" fill="#fff" stroke={ink} stroke-width="6" />
+    <circle cx="150" cy="150" r="40" fill="#2F7DF6" /><circle cx="150" cy="150" r="18" fill={ink} /><circle cx="162" cy="138" r="8" fill="#fff" />
+    {[60,90,120,150,180,210,240].map((x) => <path d={`M${x} ${x < 150 ? 118 - (x-60)/3 : 88 + (x-150)/3} l-6 -18`} stroke={ink} stroke-width="5" stroke-linecap="round" />)}
+    <use href={`#jar-${kind}`} transform="translate(230 250) scale(.7)" />
+  </>}
+  {kind === 'coffee' && <>
+    <rect x="70" y="110" width="110" height="130" rx="18" fill="#fff" stroke={ink} stroke-width="5" />
+    <path d="M180 140 c40 0 40 60 0 60" fill="none" stroke={ink} stroke-width="8" />
+    <path d="M100 90 q-10-20 6-40 M130 90 q-10-20 6-40" fill="none" stroke={ink} stroke-opacity=".4" stroke-width="5" stroke-linecap="round" />
+    <use href={`#jar-${kind}`} transform="translate(230 250) scale(.75) rotate(8)" />
+  </>}
+  {kind === 'shelf' && <>
+    <rect x="0" y="210" width="300" height="16" fill={ink} opacity=".25" />
+    <use href={`#jar-${kind}`} transform="translate(80 170)" />
+    <use href={`#jar-${kind}`} transform="translate(210 170) scale(.9)" />
+    <use href={`#jar-${kind}`} transform="translate(146 92) scale(.8)" />
+  </>}
+  {kind === 'hydrate' && <>
+    {[[70,80,30],[200,70,22],[120,200,40],[240,200,26]].map(([x,y,r]) => <path d={`M${x} ${y-r*1.5} C${x+r} ${y-r*.2} ${x+r} ${y+r} ${x} ${y+r} C${x-r} ${y+r} ${x-r} ${y-r*.2} ${x} ${y-r*1.5}z`} fill="#2F7DF6" opacity=".85" />)}
+    <use href={`#jar-${kind}`} transform="translate(150 150) rotate(-10)" />
+  </>}
+  {kind === 'soothe' && <>
+    <path d="M60 240 C60 140 130 90 220 70 C200 160 150 220 60 240z" fill="#1F9D63" />
+    <path d="M60 240 C110 180 160 130 220 70" stroke="#C8F169" stroke-width="5" fill="none" />
+    <use href={`#jar-${kind}`} transform="translate(190 210) rotate(8)" />
+  </>}
+  {kind === 'protect' && <>
+    <path d="M150 40 L240 74 V150 C240 210 196 250 150 266 C104 250 60 210 60 150 V74z" fill="#FF7A3D" stroke={ink} stroke-width="6" />
+    <use href={`#jar-${kind}`} transform="translate(150 160)" />
+  </>}
+</svg>

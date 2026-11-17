@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-label="Ascel Beauty — Glow With You. A concept cream brand demo by AscelStack.">
+  <title>Ascel Beauty — Glow With You</title>
+  <style>
+    .bg { animation: hue 12s ease-in-out infinite; }
+    @keyframes hue { 0%,100% { fill: #ff9ec4; } 33% { fill: #ffb36b; } 66% { fill: #b9a4ff; } }
+    .word { font: 900 118px/1 'Impact','Haettenschweiler','Arial Narrow Bold','Oswald',sans-serif; fill: #5a0f2e; letter-spacing: -1px; }
+    .w1 { animation: pop 6s cubic-bezier(.2,.9,.2,1.2) infinite; transform-origin: 300px 200px; }
+    .w2 { animation: pop 6s cubic-bezier(.2,.9,.2,1.2) .15s infinite; transform-origin: 300px 320px; }
+    @keyframes pop { 0% { transform: translateY(40px) scale(.9); opacity: 0; } 12%,88% { transform: none; opacity: 1; } 100% { transform: translateY(-20px); opacity: 0; } }
+    .kick { font: 800 22px/1 'Helvetica Neue',Arial,sans-serif; fill: #5a0f2e; letter-spacing: 4px; }
+    .hand { font: 600 26px/1 'Bradley Hand','Segoe Print','Comic Sans MS',cursive; fill: #5a0f2e; }
+    .jar { animation: bob 3.2s ease-in-out infinite; transform-origin: 900px 215px; }
+    @keyframes bob { 0%,100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-14px) rotate(4deg); } }
+    .ring { animation: spin 14s linear infinite; transform-origin: 900px 200px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .lid { animation: lid 6s cubic-bezier(.6,0,.2,1) infinite; transform-origin: 900px 200px; }
+    @keyframes lid { 0%,35% { transform: none; } 50%,80% { transform: translate(150px,-70px) rotate(28deg) scale(.82); } 95%,100% { transform: none; } }
+    .ringtxt { font: 800 15px/1 'Helvetica Neue',Arial,sans-serif; fill: #5a0f2e; letter-spacing: 2px; }
+    .lname { font: 900 40px/1 'Impact','Arial Narrow Bold',sans-serif; fill: #5a0f2e; }
+    .swirl { animation: swirl 6s ease-in-out infinite; transform-origin: 900px 200px; }
+    @keyframes swirl { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-40deg); } }
+    .badge text { font: 800 15px/1 'Helvetica Neue',Arial,sans-serif; }
+    .tape { animation: tape 4s ease-in-out infinite; transform-origin: 140px 70px; }
+    @keyframes tape { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(-4deg); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+
+  <rect class="bg" width="1200" height="420" rx="28" fill="#ff9ec4"/>
+  <!-- dome -->
+  <ellipse cx="600" cy="520" rx="720" ry="190" fill="#5a0f2e" opacity=".92"/>
+
+  <g class="tape"><rect x="70" y="52" width="150" height="34" fill="#ffd84d" opacity=".9"/></g>
+  <text class="kick" x="64" y="122">WE'RE ASCEL BEAUTY · HERE TO</text>
+  <g class="w1"><text class="word" x="60" y="240">GLOW</text></g>
+  <g class="w2"><text class="word" x="60" y="352">WITH YOU</text></g>
+  <text class="hand" x="610" y="392" fill="#fff4e6" style="fill:#fff4e6">soft on you through every season ✿</text>
+
+  <!-- jar -->
+  <g class="jar">
+    <ellipse cx="900" cy="330" rx="150" ry="22" fill="#000" opacity=".18"/>
+    <!-- glass body -->
+    <rect x="770" y="200" width="260" height="120" rx="26" fill="#fff4e6" opacity=".9"/>
+    <rect x="770" y="236" width="260" height="52" fill="#ffd84d"/>
+    <text x="900" y="272" text-anchor="middle" class="lname" style="font-size:30px">ASCEL ✿ BEAUTY</text>
+    <!-- cream peak -->
+    <g class="swirl">
+      <ellipse cx="900" cy="200" rx="120" ry="38" fill="#fff"/>
+      <path d="M820 200 C 860 170, 940 170, 975 198 C 940 214, 870 216, 850 200" fill="none" stroke="#ff9ec4" stroke-width="8" stroke-linecap="round"/>
+    </g>
+    <!-- lid -->
+    <g class="lid">
+      <circle cx="900" cy="200" r="128" fill="#ffd84d"/>
+      <circle cx="900" cy="200" r="112" fill="#ffc0d8"/>
+      <g class="ring">
+        <path id="r" d="M900 200 m -96 0 a 96 96 0 1 1 192 0 a 96 96 0 1 1 -192 0" fill="none"/>
+        <text class="ringtxt"><textPath href="#r" textLength="590">MADE WITH LOVE · 50 ML · ASCEL BEAUTY · DERM TESTED · VEGAN ·</textPath></text>
+      </g>
+      <text x="900" y="200" text-anchor="middle" class="lname" style="font-size:30px">CLOUD WHIP</text>
+      <text x="900" y="228" text-anchor="middle" class="lname" style="font-size:22px">MOISTURIZER</text>
+    </g>
+  </g>
+
+  <!-- AscelStack badge -->
+  <g class="badge" transform="translate(64 356)">
+    <rect width="270" height="46" rx="23" fill="#1f2023"/>
+    <rect x="10" y="10" width="26" height="26" rx="7" fill="#fff"/>
+    <text x="23" y="29" text-anchor="middle" fill="#c8102e" style="font-weight:900;font-size:18px">A</text>
+    <text x="46" y="29" fill="#fff">AscelStack</text>
+    <rect x="160" y="7" width="102" height="32" rx="16" fill="#ffb81c"/>
+    <text x="211" y="29" text-anchor="middle" fill="#c8102e" style="letter-spacing:2px">DEMO</text>
+  </g>
+</svg>

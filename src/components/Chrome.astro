@@ -1,0 +1,25 @@
+---
+import Logo from './Logo.astro';
+import Scene from './Scene.astro';
+interface Props { base?: string; back?: boolean; }
+const { base = '', back = false } = Astro.props;
+---
+  <div class="cursor" aria-hidden="true"><div class="cursor__ring"></div><div class="cursor__dot"></div></div>
+
+  <header class="topbar">
+    {back
+      ? <a class="topbar__tag topbar__back" href="/#family" data-cursor="BACK">← All creams</a>
+      : <p class="topbar__tag">Soft on you through<br />every season</p>}
+    <button class="pull" aria-expanded="false" aria-controls="menu"><span class="pull__tag">PULL ME</span></button>
+  </header>
+  <nav class="menu" id="menu" aria-label="Main">
+    <ul>
+      <li><a href={`${base}#about`}><span class="menu__thumb"><Scene kind="swatch" /></span>About<span class="arrow">→</span></a></li>
+      <li><a href={`${base}#family`}>Our Family<span class="arrow">→</span></a></li>
+      <li><a href={`${base}#moments`}>Journal<span class="arrow">→</span></a></li>
+      <li><a href={`${base}#contact`}>Contact<span class="arrow">→</span></a></li>
+    </ul>
+    <button class="menu__close">CLOSE ✕</button>
+  </nav>
+  <button class="sound" aria-pressed="false" aria-label="Toggle interface sounds"><i><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg></i></button>
+

@@ -1,0 +1,14 @@
+// Cloudflare Workers config — Ascel Beauty (static Astro site served as Workers static assets)
+// © 2026 AscelStack. All rights reserved. See LICENSE.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "ascel-beauty",
+  "compatibility_date": "2026-11-01",
+  // No Worker script: Astro builds plain HTML/JS/CSS into ./dist and Cloudflare serves it from the edge.
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "observability": { "enabled": true }
+}

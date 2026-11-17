@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# © 2026 AscelStack. Content, code and design are proprietary. See https://github.com/ASCEL6251/ascel-beauty/blob/main/LICENSE

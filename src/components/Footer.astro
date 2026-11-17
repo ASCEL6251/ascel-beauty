@@ -1,0 +1,25 @@
+---
+import Logo from './Logo.astro';
+import Lid from './Lid.astro';
+import Split from './Split.astro';
+import { products } from '../data/products';
+interface Props { base?: string; }
+const { base = '' } = Astro.props;
+---
+<footer class="footer paper" id="contact" data-theme="dark">
+  <nav class="footer__nav" aria-label="Footer">
+    <a href={`${base}#family`}>Our Family</a><a href={`${base}#about`}>About</a><a href={`${base}#moments`}>Journal</a><a href="mailto:hello@ascelstack.com">Contact</a>
+  </nav>
+  <div class="footer__mark">
+    <Logo fill="#FF9EC4" ink="#5A0F2E" />
+    <p class="footer__big"><Split text="GLOW" /><br /><Split text="WITH YOU" /></p>
+  </div>
+  <div class="footer__pile" aria-hidden="true">
+    {products.map((p, i) => <div class="body" data-i={i}><Lid p={p} uid={`ft-${i}`} /></div>)}
+  </div>
+  <a class="footer__top" href="#main" aria-label="Back to top" data-cursor="TOP">↑</a>
+  <div class="footer__bottom">
+    <span>© 2026 <a href="https://ascelstack.com">AscelStack</a>. All rights reserved. Ascel Beauty is a concept brand by ascelstack.com</span>
+    <span>Drag the jars around ✿</span>
+  </div>
+</footer>

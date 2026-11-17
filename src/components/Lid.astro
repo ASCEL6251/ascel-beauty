@@ -1,0 +1,37 @@
+---
+import type { Product } from '../data/products';
+interface Props { p: Product; uid: string; class?: string; }
+const { p, uid, class: cls = '' } = Astro.props;
+const ring = 'MADE WITH LOVE • 50 ML • ASCEL BEAUTY • DERM TESTED • VEGAN • ';
+---
+<svg class={`lid ${cls}`} viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-label={`${p.name} ${p.name2}`}>
+  <defs>
+    <path id={`ring-${uid}`} d="M200,200 m-148,0 a148,148 0 1,1 296,0 a148,148 0 1,1 -296,0" />
+    <radialGradient id={`sheen-${uid}`} cx="35%" cy="28%" r="75%">
+      <stop offset="0" stop-color="#fff" stop-opacity=".55" />
+      <stop offset=".45" stop-color="#fff" stop-opacity="0" />
+      <stop offset="1" stop-color="#000" stop-opacity=".18" />
+    </radialGradient>
+  </defs>
+  <circle cx="200" cy="200" r="198" fill={p.rim} />
+  <circle cx="200" cy="200" r="190" fill="none" stroke={p.ink} stroke-opacity=".18" stroke-width="10" stroke-dasharray="3 6" />
+  <circle cx="200" cy="200" r="176" fill={p.lid} />
+  <text font-family="Inter Tight, sans-serif" font-weight="800" font-size="17" fill={p.ink}>
+    <textPath href={`#ring-${uid}`} textLength="926" lengthAdjust="spacing">{ring}</textPath>
+  </text>
+  <circle cx="200" cy="200" r="128" fill="none" stroke={p.ink} stroke-opacity=".25" stroke-width="2" stroke-dasharray="2 5" />
+  <!-- mini logo -->
+  <g transform="translate(160 78) scale(.36)">
+    <path fill={p.ink} d="M110 6c14 0 22 9 20 20 18-6 36 4 36 20 22-2 44 12 44 36 0 22-16 34-34 36 4 22-14 34-36 30-10 12-48 12-60 0-22 4-40-8-36-30C26 116 10 104 10 82c0-24 22-38 44-36 0-16 18-26 36-20-2-11 6-20 20-20z"/>
+    <text x="110" y="78" text-anchor="middle" font-family="Barlow Condensed" font-weight="900" font-size="44" fill={p.lid}>ASCEL</text>
+    <text x="110" y="114" text-anchor="middle" font-family="Barlow Condensed" font-weight="900" font-size="32" fill={p.lid}>BEAUTY</text>
+  </g>
+  <text x="200" y="196" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="900" font-size={p.name.length > 9 ? 50 : 62} fill={p.ink} letter-spacing="-.5">{p.name}</text>
+  <text x="200" y="240" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="900" font-size={p.name2.length > 9 ? 40 : 50} fill={p.ink}>{p.name2}</text>
+  <g fill={p.ink}>
+    {[0,4,6,10,12,13,17,20,22,26,27,31,34].map((x, i) => <rect x={176 + x} y="252" width={i % 3 ? 1.6 : 2.6} height="18" />)}
+  </g>
+  <path d="M120 286 h160 l-10 15 10 15 h-160 l10-15z" fill={p.ink} />
+  <text x="200" y="307" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="800" font-size="20" letter-spacing="2" fill={p.lid}>{p.variant}</text>
+  <circle cx="200" cy="200" r="198" fill={`url(#sheen-${uid})`} />
+</svg>

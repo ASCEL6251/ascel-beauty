@@ -1,0 +1,31 @@
+{
+  "name": "ascel-beauty",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Ascel Beauty \u2014 concept cream brand demo by AscelStack (ascelstack.com). Proprietary, all rights reserved.",
+  "license": "SEE LICENSE IN LICENSE",
+  "author": "AscelStack (https://ascelstack.com)",
+  "homepage": "https://ascelstack.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ASCEL6251/ascel-beauty.git"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "cf:dev": "astro build && wrangler dev",
+    "deploy": "astro build && wrangler deploy"
+  },
+  "dependencies": {
+    "astro": "^7.4.12",
+    "gsap": "^3.15.1",
+    "lenis": "^1.3.27",
+    "matter-js": "^0.20.0",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.164.0"
+  }
+}
